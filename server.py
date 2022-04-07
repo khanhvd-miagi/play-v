@@ -68,11 +68,19 @@ def hello_world(request):
         'SegmentDuration' : segment_duration
     }
     job_outputs = [ hls_audio, hls_400k, hls_600k, hls_1000k, hls_1500k, hls_2000k ]
-    playlist = {
-        'Name' : 'hls_' + output_key,
-        'Format' : 'HLSv3',
-        'OutputKeys' : map(lambda x: x['Key'], job_outputs)
-    }
+    playlist = [
+        {
+            'Name' : 'hls_' + output_key,
+            'Format' : 'HLSv3',
+            'OutputKeys' : [
+                hls_audio['Key'], hls_400k['Key'], hls_600k['Key'], hls_1000k['Key'], hls_1500k['Key'], hls_2000k['Key']
+            ],
+            'HlsContentProtection': {
+                'Method': 'aes-128',
+                'KeyStoragePolicy': 'WithVariantPlaylists'
+            }
+        }
+    ]
     
     # Creating the job.
     # create_job_request = {
