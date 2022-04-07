@@ -38,19 +38,19 @@ def hello_world(request):
     hls_1000k = {
         'Key' : 'hls1000k/' + output_key,
         'PresetId' : hls_1000k_preset_id,
-        # 'ThumbnailPattern': 'hls1000k/thumbnail/' + output_key + '-{resolution}-{count}',
+        'ThumbnailPattern': 'hls1000k/thumbnail/' + output_key + '-{resolution}-{count}',
         'SegmentDuration' : segment_duration
     }
     hls_1500k = {
         'Key' : 'hls1500k/' + output_key,
         'PresetId' : hls_1500k_preset_id,
-        # 'ThumbnailPattern': 'hls1500k/thumbnail/' + output_key + '-{resolution}-{count}',
+        'ThumbnailPattern': 'hls1500k/thumbnail/' + output_key + '-{resolution}-{count}',
         'SegmentDuration' : segment_duration
     }
     hls_2000k = {
         'Key' : 'hls2000k/' + output_key,
         'PresetId' : hls_2000k_preset_id,
-        # 'ThumbnailPattern': 'hls2000k/thumbnail/' + output_key + '-{resolution}-{count}',
+        'ThumbnailPattern': 'hls2000k/thumbnail/' + output_key + '-{resolution}-{count}',
         'SegmentDuration' : segment_duration
     }
     job_outputs = [ hls_1000k, hls_1500k, hls_2000k ]
@@ -70,8 +70,8 @@ def hello_world(request):
     create_job_request = {
         'PipelineId' : pipeline_id,
         'Input' : job_input,
-        'OutputKeyPrefix' : output_prefix,
         'Outputs' : job_outputs,
+        'OutputKeyPrefix' : output_prefix,
         'Playlists' : playlist
     }
     
