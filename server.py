@@ -19,7 +19,7 @@ def hello_world(request):
     pipeline_id = '1649294842147-nj1bp1'
     
     # This is the name of the input key that you would like to transcode.
-    input_key = '20220406/mytam.mp4'
+    input_key = 'mytam.mp4'
     
     # HLS Presets that will be used to create an adaptive bitrate playlist.
     hls_1000k_preset_id     = '1351620000001-200030';
@@ -75,8 +75,8 @@ def hello_world(request):
     #     'outputs' : job_outputs,
     #     'playlists' : [ playlist ]
     # }
-    output_prefix = output_key_prefix + output_key + '/'
-    client.create_job(PipelineId=pipeline_id, Input=job_input, Outputs=job_outputs, OutputKeyPrefix=output_prefix, Playlists=playlist)
+    # output_prefix = output_key_prefix + output_key + '/'
+    client.create_job(PipelineId=pipeline_id, Input=job_input, Outputs=job_outputs, Playlists=playlist)
     
     return Response("OK")
 
