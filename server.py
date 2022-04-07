@@ -94,7 +94,7 @@ def hello_world(request):
                                         Input=job_input,
                                         Outputs=job_outputs,
                                         OutputKeyPrefix=output_key_prefix + output_key +'/',
-                                        Playlists=[playlist])
+                                        Playlists=playlist)
     
     return Response(create_job_result["Id"])
 
