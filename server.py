@@ -9,14 +9,17 @@ import boto3
 
 
 def hello_world(request):
-    client = boto3.client('elastictranscoder', 'ap-northeast-1')
+    # Region where the sample will be run
+    region = 'us-east-1'
+    client = boto3.client('elastictranscoder', region)
+    
     # This is the ID of the Elastic Transcoder pipeline that was created when
     # setting up your AWS environment:
     pipeline_id = '1649294842147-nj1bp1'
+    
     # This is the name of the input key that you would like to transcode.
     input_key = '20220406/mytam.mp4'
-    # Region where the sample will be run
-    region = 'us-east-1'
+    
     # HLS Presets that will be used to create an adaptive bitrate playlist.
     hls_64k_audio_preset_id = '1351620000001-200071';
     hls_0400k_preset_id     = '1351620000001-200050';
