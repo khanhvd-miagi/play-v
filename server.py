@@ -11,7 +11,8 @@ def hello_world(request):
     region = 'us-east-1'
     client = boto3.client('elastictranscoder', 
                           aws_access_key_id='AKIARWWPZA7VUQ7G5WIX',
-                          aws_secret_access_key='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'
+                          aws_secret_access_key='jKN9FdJMmkUrm9lt4VmYrIpBB5n0YVkPqgnhd7El',
+                          region_name=region
                           )
     
     # This is the ID of the Elastic Transcoder pipeline that was created when
@@ -75,10 +76,10 @@ def hello_world(request):
         'Playlists' : playlist
     }
     
-    # client.create_job(**create_job_request)
-    jobs = client.list_jobs_by_pipeline(PipelineId=pipeline_id)
+    client.create_job(**create_job_request)
+    # jobs = client.list_jobs_by_pipeline(PipelineId=pipeline_id)
 
-    return Response(jobs[0]['Id'])
+    return Response("OK")
 
 if __name__ == '__main__':
     port = int(os.environ.get("PORT"))
