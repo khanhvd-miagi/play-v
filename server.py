@@ -65,15 +65,17 @@ def hello_world(request):
     ]
     
     # Creating the job.
-    # create_job_request = {
-    #     'pipeline_id' : pipeline_id,
-    #     'input_name' : job_input,
-    #     'output_key_prefix' : output_key_prefix + output_key +'/',
-    #     'outputs' : job_outputs,
-    #     'playlists' : [ playlist ]
-    # }
+    
     output_prefix = output_key_prefix + output_key + '/'
-    client.create_job(PipelineId=pipeline_id, Input=job_input, Outputs=job_outputs, OutputKeyPrefix=output_prefix, Playlists=playlist)
+    create_job_request = {
+        'PipelineId' : pipeline_id,
+        'Input' : job_input,
+        'OutputKeyPrefix' : output_prefix,
+        'Outputs' : job_outputs,
+        'Playlists' : playlist
+    }
+    
+    client.create_job(**create_job_request)
     
     return Response("OK")
 
