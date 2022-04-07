@@ -6,12 +6,6 @@ import hashlib
 
 import boto3
 
-session = boto3.Session(
-    aws_access_key_id='AKIARWWPZA7VUQ7G5WIX',
-    aws_secret_access_key='jKN9FdJMmkUrm9lt4VmYrIpBB5n0YVkPqgnhd7El'
-)
-    
-
 def hello_world(request):
     # Region where the sample will be run
     region = 'us-east-1'
@@ -22,7 +16,7 @@ def hello_world(request):
     
     # This is the ID of the Elastic Transcoder pipeline that was created when
     # setting up your AWS environment:
-    pipeline_id = 'arn:aws:elastictranscoder:us-east-1:117473609707:pipeline/1649294842147-nj1bp1'
+    pipeline_id = '1649294842147-nj1bp1'
     
     # This is the name of the input key that you would like to transcode.
     input_key = '20220406/mytam.mp4'
