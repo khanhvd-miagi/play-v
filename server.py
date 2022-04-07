@@ -15,7 +15,10 @@ session = boto3.Session(
 def hello_world(request):
     # Region where the sample will be run
     region = 'us-east-1'
-    client = boto3.client('elastictranscoder')
+    client = boto3.client('elastictranscoder', 
+                          aws_access_key_id='AKIARWWPZA7VUQ7G5WIX',
+                          aws_secret_access_key='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'
+                          )
     
     # This is the ID of the Elastic Transcoder pipeline that was created when
     # setting up your AWS environment:
