@@ -11,7 +11,7 @@ import boto3
 def hello_world(request):
     # Region where the sample will be run
     region = 'us-east-1'
-    client = boto3.client('elastictranscoder', region)
+    client = boto3.client('elastictranscoder')
     
     # This is the ID of the Elastic Transcoder pipeline that was created when
     # setting up your AWS environment:
@@ -30,7 +30,7 @@ def hello_world(request):
     # HLS Segment duration that will be targeted.
     segment_duration = '2'
     #All outputs will have this prefix prepended to their output key.
-    output_key_prefix = 'elastic-transcoder-samples/output/hls/'
+    output_key_prefix = 'output/'
     # Setup the job input using the provided input key.
     job_input = { 'Key': input_key }
     
@@ -82,7 +82,7 @@ def hello_world(request):
         'playlists' : [ playlist ]
     }
     create_job_result=client.create_job(**create_job_request)
-    return Response("OK")
+    return Response(f'Created Amazon Elastic Transcoder HLS job {create_job_result["Id"]}')
 
 if __name__ == '__main__':
     port = int(os.environ.get("PORT"))
