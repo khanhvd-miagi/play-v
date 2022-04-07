@@ -65,19 +65,19 @@ def hello_world(request):
     ]
     
     # Creating the job.
-    
-    output_prefix = output_key_prefix + output_key + '/'
-    create_job_request = {
-        'PipelineId' : pipeline_id,
-        'Input' : job_input,
-        'Outputs' : job_outputs,
-        'OutputKeyPrefix' : output_prefix,
-        'Playlists' : playlist
-    }
-    
-    client.create_job(**create_job_request)
-    
     return Response("OK")
+    # output_prefix = output_key_prefix + output_key + '/'
+    # create_job_request = {
+    #     'PipelineId' : pipeline_id,
+    #     'Input' : job_input,
+    #     'Outputs' : job_outputs,
+    #     # 'OutputKeyPrefix' : output_prefix,
+    #     # 'Playlists' : playlist
+    # }
+    
+    # client.create_job(**create_job_request)
+    
+    # return Response("OK")
 
 if __name__ == '__main__':
     port = int(os.environ.get("PORT"))
