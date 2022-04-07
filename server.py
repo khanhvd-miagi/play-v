@@ -34,6 +34,7 @@ def hello_world(request):
     
     # Setup the job outputs using the HLS presets.
     output_key = hashlib.sha256(input_key.encode('utf-8')).hexdigest()
+
     hls_1000k = {
         'Key' : 'hls1000k/' + output_key,
         'PresetId' : hls_1000k_preset_id,
@@ -59,11 +60,7 @@ def hello_world(request):
             'Format' : 'HLSv3',
             'OutputKeys' : [
                 hls_1000k['Key'], hls_1500k['Key'], hls_2000k['Key']
-            ],
-            'HlsContentProtection': {
-                'Method': 'aes-128',
-                'KeyStoragePolicy': 'WithVariantPlaylists'
-            }
+            ]
         }
     ]
     
@@ -75,8 +72,8 @@ def hello_world(request):
     #     'outputs' : job_outputs,
     #     'playlists' : [ playlist ]
     # }
-    # output_prefix = output_key_prefix + output_key + '/'
-    client.create_job(PipelineId=pipeline_id, Input=job_input, Outputs=job_outputs, Playlists=playlist)
+    output_prefix = output_key_prefix + output_key + '/'
+    client.create_job(PipelineId=pipeline_id, Input=job_input, Outputs=job_outputs, OutputKeyPrefix=output_prefix, Playlists=playlist)
     
     return Response("OK")
 
