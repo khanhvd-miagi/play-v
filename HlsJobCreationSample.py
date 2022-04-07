@@ -84,4 +84,4 @@ create_job_request = {
     'playlists' : [ playlist ]
 }
 create_job_result=transcoder_client.create_job(**create_job_request)
-print 'HLS job has been created: ', json.dumps(create_job_result['Job'], indent=4, sort_keys=True)
+print ('HLS job has been created: ', json.dumps(create_job_result['Job'], indent=4, sort_keys=True))
