@@ -75,13 +75,12 @@ def hello_world(request):
     #     'outputs' : job_outputs,
     #     'playlists' : [ playlist ]
     # }
+    output_prefix = output_key_prefix + output_key + '/'
     create_job_result=client.create_job(PipelineId=pipeline_id,
                                         Input=job_input,
                                         Outputs=job_outputs,
-                                        OutputKeyPrefix=output_key_prefix + output_key + '/',
-                                        Playlists=playlist,
-                                        UserMetadata={}
-                                        )
+                                        OutputKeyPrefix=output_prefix,
+                                        Playlists=playlist)
     
     return Response(create_job_result["Id"])
 
