@@ -76,13 +76,9 @@ def hello_world(request):
     #     'playlists' : [ playlist ]
     # }
     output_prefix = output_key_prefix + output_key + '/'
-    create_job_result=client.create_job(PipelineId=pipeline_id,
-                                        Input=job_input,
-                                        Outputs=job_outputs,
-                                        OutputKeyPrefix=output_prefix,
-                                        Playlists=playlist)
+    client.create_job(PipelineId=pipeline_id, Input=job_input, Outputs=job_outputs, OutputKeyPrefix=output_prefix, Playlists=playlist)
     
-    return Response(create_job_result["Id"])
+    return Response("OK")
 
 if __name__ == '__main__':
     port = int(os.environ.get("PORT"))
