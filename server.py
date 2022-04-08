@@ -24,10 +24,10 @@ def hello_world(request):
     input_key = 'mytam.mp4'
     
     # HLS Presets that will be used to create an adaptive bitrate playlist.
-    hls_1000k_preset_id     = '1351620000001-200030';
-    hls_1500k_preset_id     = '1351620000001-200020';
-    hls_2000k_preset_id     = '1351620000001-200010';
-    mp4_480p = '"1351620000001-000020" '
+    hls_1000k_preset_id     = '1351620000001-200030'
+    hls_1500k_preset_id     = '1351620000001-200020'
+    hls_2000k_preset_id     = '1351620000001-200010'
+    mp4_480p                = '1351620000001-000020'
     # HLS Segment duration that will be targeted.
     segment_duration = '60'
     #All outputs will have this prefix prepended to their output key.
