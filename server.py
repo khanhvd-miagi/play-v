@@ -7,10 +7,14 @@ import boto3
 def main():
     # Region where the sample will be run
     region = 'us-east-1'
-    client = boto3.client('elastictranscoder', 
-                          aws_access_key_id='ASIARWWPZA7VSRLON3HK',
-                          aws_secret_access_key='Iw3ScfgGDOZmXCm3Gbg9zFwPe0+H4SM4/LIto4+s',
-                          aws_session_token='IQoJb3JpZ2luX2VjEDMaCXVzLWVhc3QtMSJHMEUCIQDjwWwOzS33bSqLUMYw0mVHU8VYCHBuEU1xbUVgquHbswIgcDwxqazBSz4Y4ZJvj0CXc6ia/jy3NGoU4Wla0G1cxWoq3AEIzP//////////ARAAGgwxMTc0NzM2MDk3MDciDD4AAF+7KhDY/he0lSqwAR+F9C8l3qlxPObHv+E7SSBNO5ou+9lZud1E9O8aBJuC2byOvIjCL+K0Ux4P5sXPpKSIKq2CFFhxgsv9Mi8BTETBYf6YchywcliYwBSyAVRNFvQ3LxivYb1mIWtbD96gqIcmRwqYQcb2MxQOR2Btia7U4epSGHDn/zSns0482TS57iUcftrfmMu5bXPFsiMJzHYMihH737bHw60ATERNrUnmj7DHOQWbIvrMrgUJQ9uYMO7JvpIGOpgBZ/avq2PyqwQFGQSq1QdlPe67kPqKNwJYASbsnMCgUbK5dIIrWQy8U6gSZYHX5BH0tSvmQJQcj9DqGUqTVqMhCw0rXXtjAKTe+GnFTRbHz/f2oBHioBrAZu07CkWxOQSsnx6JdoQ2fPkCsFRHv6NBerbWE70G3h9WS1bW0Yan14NGOanTtKbX+bZZUVZbNgQCsuxXqKX2GkU=',
+    client = boto3.client('sts')
+    credentials = client.get_session_token(DurationSeconds=129600)
+    print(credentials['Credentials']['AccessKeyId'])
+    
+    elastictranscoder = boto3.client('elastictranscoder', 
+                          aws_access_key_id=credentials['Credentials']['AccessKeyId'],
+                          aws_secret_access_key=credentials['Credentials']['SecretAccessKey'],
+                          aws_session_token=credentials['Credentials']['SessionToken'],
                           region_name=region
                           )
     
@@ -46,7 +50,7 @@ def main():
         'Outputs' : job_outputs
     }
     
-    client.create_job(**create_job_request)
+    elastictranscoder.create_job(**create_job_request)
 
     print("OK")
 
