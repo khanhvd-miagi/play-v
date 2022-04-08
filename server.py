@@ -10,8 +10,9 @@ def hello_world(request):
     # Region where the sample will be run
     region = 'us-east-1'
     client = boto3.client('elastictranscoder', 
-                          aws_access_key_id='AKIARWWPZA7VUQ7G5WIX',
-                          aws_secret_access_key='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',
+                          aws_access_key_id='ASIARWWPZA7V2NFL5KO5',
+                          aws_secret_access_key='YQ7qVDBgR3LmUYKpV1Bki3I2Hrc/8p4FRsC1zo4X',
+                          aws_session_token='IQoJb3JpZ2luX2VjEDIaCXVzLWVhc3QtMSJIMEYCIQDkTq4Q63srKH1MEX0RvFXsaWldFTsCqSLIw6aXqClAHwIhAPyVC6rhccPJSvhWAe79V+mTfSKr9boVK0Of+G1iOqCqKtwBCMv//////////wEQABoMMTE3NDczNjA5NzA3Igw9QqVi7iGz9oToKJAqsAGnOuPDmQ+izQjCtY/hnxbtA2pJ2MHu+I51PzUOYlTIUIW7d3ps9x16cvV1rsc3zk+H6EunE69T16dMV6x+oC89dLDdRcvycWLd55EsB3Kk/78K1u6stnreKAxAwXD2fW5KmX1Od21CoxmdRm/3nJqzaLRigW1BWyoX8Zmq45aqwA/PYobho7QJlXva/A3h9DAzp8yHiY946nEY2U4selywYX0KORvjjMD8gpXyEN8tQDCenb6SBjqXAW7Oei2tad2ShZ/kWkPeqUvOuA6l+pXMkV7Ew7TH8ygJ+YWy7WxMxXhpnRQi4B7w2EMYq9wKqwTtKau+U9quB/3xiIWxByflcUtyLsk7jaXrdxRSHGwP4RpSSNfsjt2L46HYLDO7nX/e0wFezVn6dTthrE6eAeBzSlufWbvDcVOV72PZM9vj/0ptYQ7xoLuWVA3u55ke5mA=',
                           region_name=region
                           )
     
