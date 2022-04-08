@@ -29,7 +29,7 @@ def hello_world(request):
     hls_2000k_preset_id     = '1351620000001-200010'
     mp4_480p                = '1351620000001-000020'
     # HLS Segment duration that will be targeted.
-    segment_duration = '60'
+    segment_duration = '30'
     #All outputs will have this prefix prepended to their output key.
     output_key_prefix = 'output/'
     # Setup the job input using the provided input key.
@@ -88,11 +88,11 @@ def hello_world(request):
 
     return Response("OK")
 
-if __name__ == '__main__':
-    port = int(os.environ.get("PORT"))
-    with Configurator() as config:
-        config.add_route('hello', '/')
-        config.add_view(hello_world, route_name='hello')
-        app = config.make_wsgi_app()
-    server = make_server('0.0.0.0', port, app)
-    server.serve_forever()
+# if __name__ == '__main__':
+#     port = int(os.environ.get("PORT"))
+#     with Configurator() as config:
+#         config.add_route('hello', '/')
+#         config.add_view(hello_world, route_name='hello')
+#         app = config.make_wsgi_app()
+#     server = make_server('0.0.0.0', port, app)
+#     server.serve_forever()
