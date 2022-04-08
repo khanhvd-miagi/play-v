@@ -27,8 +27,9 @@ def hello_world(request):
     hls_1000k_preset_id     = '1351620000001-200030';
     hls_1500k_preset_id     = '1351620000001-200020';
     hls_2000k_preset_id     = '1351620000001-200010';
+    mp4_480p = '"1351620000001-000020" '
     # HLS Segment duration that will be targeted.
-    segment_duration = '2'
+    segment_duration = '60'
     #All outputs will have this prefix prepended to their output key.
     output_key_prefix = 'output/'
     # Setup the job input using the provided input key.
@@ -55,13 +56,18 @@ def hello_world(request):
         'ThumbnailPattern': 'hls2000k/thumbnail/' + output_key + '-{resolution}-{count}',
         'SegmentDuration' : segment_duration
     }
-    job_outputs = [ hls_1000k, hls_1500k, hls_2000k ]
+    mp4_480p = {
+        'Key' : 'mp4/' + output_key,
+        'PresetId' : mp4_480p,
+        'ThumbnailPattern': ''
+    }
+    job_outputs = [ hls_1000k, hls_1500k, hls_2000k, mp4_480p ]
     playlist = [
         {
             'Name' : 'hls_' + output_key,
             'Format' : 'HLSv3',
             'OutputKeys' : [
-                hls_1000k['Key'], hls_1500k['Key'], hls_2000k['Key']
+                hls_1000k['Key'], hls_1500k['Key'], hls_2000k['Key'], mp4_480p['Key']
             ]
         }
     ]
